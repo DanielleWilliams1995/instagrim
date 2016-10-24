@@ -1,0 +1,78 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02-Oct-2016, 13:59:45
+    Author     : Danielle
+*/
+
+.centerContent1{
+    border-style: solid;
+    border-width: 15px;
+    border-color: rgba(0, 0, 0, .90);
+    height:420px;
+    width: 750px;
+    position: absolute;
+    left: 30%;
+    top: 25%; 
+    margin-left: -100px;
+    margin-top: -40px;
+    color: #FFFFFF;
+    text-align: left;
+    font-family: Calibri;
+    background: rgba(0, 0, 0, .70);	
+    /*Gives the content div a slightly transparent black bacground*/
+
+
+}
+
+.navBar1{
+
+    height:55px;
+    width: 1370px;
+    position: absolute;
+    left: -30%;
+    top: -15%; 
+    margin-left: -100px;
+    margin-top: -75px;
+    background: black;
+    text-align: right;
+    
+}
+
+.navBar1 ul{
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+.navBar1 li{
+    list-style: none;				/*Removes bullet points from Nav bar*/
+    display: inline-block;
+
+}
+
+.navBar1 a{
+    text-decoration: none;			/*Removes blue and purple links*/
+    float: left;					/*List items are displayed horizontally rather than vertically*/
+    display: block;
+    padding: 10px 15px;				/*Determines space between the list items*/
+    margin: 0;
+    font-family: Calibri;
+    color: #FFFFFF;				/*When Nav bar links are hovered over they change colour and have a 1 pixel thick black stroke*/
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    font-weight: bold;
+    font-size: 20px;
+
+}

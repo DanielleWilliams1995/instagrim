@@ -11,36 +11,38 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Instagrim</title>
         <link rel="stylesheet" type="text/css" href="Styles.css" />
+        <link rel="stylesheet" type="text/css" href="newcss.css" />
 
     </head>
     <body>
-        <header>
-        <h1>InstaGrim ! </h1>
-        <h2>Your world in Black and White</h2>
-        </header>
-        <nav>
-            <ul>
-                
-                <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
-            </ul>
-        </nav>
-       
-        <article>
-            <h3>Login</h3>
-            <form method="POST"  action="Login">
-                <ul>
-                    <li>User Name <input type="text" name="username"></li>
-                    <li>Password <input type="password" name="password"></li>
-                </ul>
-                <br/>
-                <input type="submit" value="Login"> 
-            </form>
+        <div class="centerContent1">
+            <div class="logIn">
+                <h1>Login </h1>
+                <br>
+                <h2>Please enter your username and password</h2>
+                <form method="POST"  action="login">
+                    <ul>
+                        <br>
+                        <li>User Name <input type="text" name="username"></li>
+                        <li>Password  <input type="password" name="password"></li>
 
-        </article>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/Instagrim">Home</a></li>
-            </ul>
-        </footer>
+                    </ul>
+                    <br>
+                    <input type="submit" value="login" id="button"> 
+                </form>
+            </div>
+
+
+
+            <div class="navBar1">
+                <ul>
+                    <li><a href="/Instagrim">InstaGrim</a></li>
+                    <li><a href="/Instagrim">Home</a></li>
+                    <li><a href="/Instagrim/Register">Register</a></li>
+
+                </ul>
+            </div>
+        </div>
+
     </body>
 </html>

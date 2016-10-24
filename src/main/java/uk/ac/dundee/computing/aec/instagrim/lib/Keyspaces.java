@@ -30,6 +30,14 @@ public final class Keyspaces {
                     + " name  varchar,"
                     + " PRIMARY KEY (picid)"
                     + ")";
+               String CreateComments = "CREATE TABLE if not exists instagrim.comments (\n"
+                    + "      picid uuid,\n"
+                    + "      date timestamp,\n"
+                    + "      content text,\n"
+                    + "      username text,\n"
+                    + "      PRIMARY KEY (picid, date)\n"
+                    + "  );";
+            
             String Createuserpiclist = "CREATE TABLE if not exists instagrim.userpiclist (\n"
                     + "picid uuid,\n"
                     + "user varchar,\n"
@@ -43,10 +51,11 @@ public final class Keyspaces {
                     + "  );";
             String CreateUserProfile = "CREATE TABLE if not exists instagrim.userprofiles (\n"
                     + "      login text PRIMARY KEY,\n"
-                     + "     password text,\n"
+                    + "     password text,\n"
                     + "      first_name text,\n"
                     + "      last_name text,\n"
-                    + "      email set<text>,\n"
+                    + "      email text,\n"
+                    + "      profilepic UUID,\n"
                     + "      addresses  map<text, frozen <address>>\n"
                     + "  );";
             Session session = c.connect();
@@ -85,6 +94,13 @@ public final class Keyspaces {
                 session.execute(cqlQuery);
             } catch (Exception et) {
                 System.out.println("Can't create Address type " + et);
+            }
+            System.out.println("" + CreateComments);
+            try {
+                SimpleStatement cqlQuery = new SimpleStatement(CreateComments);
+                session.execute(cqlQuery);
+            } catch (Exception et) {
+                System.out.println("Can't create Comments " + et);
             }
             System.out.println("" + CreateUserProfile);
             try {

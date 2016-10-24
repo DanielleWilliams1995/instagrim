@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package uk.ac.dundee.computing.aec.instagrim.servlets;
 
 import com.datastax.driver.core.Cluster;
@@ -21,18 +20,18 @@ import uk.ac.dundee.computing.aec.instagrim.models.User;
 
 /**
  *
- * @author Administrator
+ * @author Danielle
  */
 @WebServlet(name = "Register", urlPatterns = {"/Register"})
 public class Register extends HttpServlet {
-    Cluster cluster=null;
+
+    Cluster cluster = null;
+
     public void init(ServletConfig config) throws ServletException {
         // TODO Auto-generated method stub
         cluster = CassandraHosts.getCluster();
+
     }
-
-
-
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -45,15 +44,26 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username=request.getParameter("username");
-        String password=request.getParameter("password");
-        
-        User us=new User();
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String first_name = request.getParameter("first_name");
+        String last_name = request.getParameter("last_name");
+        String email = request.getParameter("email");
+
+        User us = new User();
         us.setCluster(cluster);
-        us.RegisterUser(username, password);
-        
-	response.sendRedirect("/Instagrim");
-        
+        us.RegisterUser(username, password, first_name, last_name, email);
+        response.sendRedirect("ProfilePic.jsp");
+
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+        rd.forward(request, response);
     }
 
     /**

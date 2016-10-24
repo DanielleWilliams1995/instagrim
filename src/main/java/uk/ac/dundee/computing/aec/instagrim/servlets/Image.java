@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -25,6 +26,7 @@ import org.apache.commons.fileupload.util.Streams;
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
 import uk.ac.dundee.computing.aec.instagrim.lib.Convertors;
 import uk.ac.dundee.computing.aec.instagrim.models.PicModel;
+import uk.ac.dundee.computing.aec.instagrim.models.User;
 import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
 import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
 
@@ -45,8 +47,6 @@ public class Image extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Cluster cluster;
     private HashMap CommandsMap = new HashMap();
-    
-    
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -81,13 +81,13 @@ public class Image extends HttpServlet {
         }
         switch (command) {
             case 1:
-                DisplayImage(Convertors.DISPLAY_PROCESSED,args[2], response);
+                DisplayImage(Convertors.DISPLAY_PROCESSED, args[2], response);
                 break;
             case 2:
                 DisplayImageList(args[2], request, response);
                 break;
             case 3:
-                DisplayImage(Convertors.DISPLAY_THUMB,args[2],  response);
+                DisplayImage(Convertors.DISPLAY_THUMB, args[2], response);
                 break;
             default:
                 error("Bad Operator", response);
@@ -98,19 +98,23 @@ public class Image extends HttpServlet {
         PicModel tm = new PicModel();
         tm.setCluster(cluster);
         java.util.LinkedList<Pic> lsPics = tm.getPicsForUser(User);
+        User us = new User();
+        us.setCluster(cluster);
+        UUID profilePic = tm.getProfilePic(User);
+        request.setAttribute("ProfilePic", profilePic);
+
         RequestDispatcher rd = request.getRequestDispatcher("/UsersPics.jsp");
         request.setAttribute("Pics", lsPics);
         rd.forward(request, response);
 
     }
 
-    private void DisplayImage(int type,String Image, HttpServletResponse response) throws ServletException, IOException {
+    private void DisplayImage(int type, String Image, HttpServletResponse response) throws ServletException, IOException {
         PicModel tm = new PicModel();
         tm.setCluster(cluster);
-  
-        
-        Pic p = tm.getPic(type,java.util.UUID.fromString(Image));
-        
+
+        Pic p = tm.getPic(type, java.util.UUID.fromString(Image));
+
         OutputStream out = response.getOutputStream();
 
         response.setContentType(p.getType());
@@ -131,15 +135,19 @@ public class Image extends HttpServlet {
 
             String type = part.getContentType();
             String filename = part.getSubmittedFileName();
-            
-            
+
+            String profilePic = request.getParameter("profilePic");
+
+            boolean profpic;
+            profpic = profilePic != null;
+
             InputStream is = request.getPart(part.getName()).getInputStream();
             int i = is.available();
-            HttpSession session=request.getSession();
-            LoggedIn lg= (LoggedIn)session.getAttribute("LoggedIn");
-            String username="majed";
-            if (lg.getlogedin()){
-                username=lg.getUsername();
+            HttpSession session = request.getSession();
+            LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
+            String username = "majed";
+            if (lg.getlogedin()) {
+                username = lg.getUsername();
             }
             if (i > 0) {
                 byte[] b = new byte[i + 1];
@@ -147,12 +155,12 @@ public class Image extends HttpServlet {
                 System.out.println("Length : " + b.length);
                 PicModel tm = new PicModel();
                 tm.setCluster(cluster);
-                tm.insertPic(b, type, filename, username);
+                tm.insertPic(b, type, filename, username, profpic);
 
                 is.close();
             }
-            RequestDispatcher rd = request.getRequestDispatcher("/upload.jsp");
-             rd.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher("search.jsp");
+            rd.forward(request, response);
         }
 
     }

@@ -4,13 +4,195 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Sep 27, 2014, 1:34:36 PM
-    Author     : Administrator
+    Created on : Sep 16, 2016
+    Author     : Danielle Williams
 */
 
+.image-upload{
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    left: 20px;
+    top: 0;
+}
+h4{
+    
+}
 
 nav {
     text-align: left;
     border: 2px;
     float: right;
+}
+
+.navBar{
+
+    position: fixed;
+   width: 820px;
+  top: 50%;
+  left: 50%;
+  margin-top: 80px;
+  margin-left: -402px;
+    background: black;
+    text-align: center;
+}
+
+.navBar ul{
+    margin: 0;
+    padding: 0;
+
+}
+
+.navBar li{
+    list-style: none;				/*Removes bullet points from Nav bar*/
+    display: inline-block;
+}
+
+.navBar a{
+    text-decoration: none;			/*Removes blue and purple links*/
+    float: left;					/*List items are displayed horizontally rather than vertically*/
+    display: block;
+    padding: 10px 15px;				/*Determines space between the list items*/
+    margin: 0;
+    font-family: Calibri;
+    color: #FFFFFF;				/*When Nav bar links are hovered over they change colour and have a 1 pixel thick black stroke*/
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+Body{
+    background-image: url("eight_horns.png");
+
+}
+
+.centerContent{
+    border-style: solid;
+    border-width: 15px;
+    border-color: rgba(0, 0, 0, .90);
+    height:480px;
+    width: 750px;
+    position: absolute;
+    left: 30%;
+    top: 20%; 
+    margin-left: -100px;
+    margin-top: -75px;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Calibri;
+    background: rgba(0, 0, 0, .70);	
+    /*Gives the content div a slightly transparent black bacground*/
+
+
+}
+.centerContent2{
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgba(0, 0, 0, .90);
+    
+     
+   position: fixed;
+   width: 800px;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+   transform: translate(-37%, -50%);
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Calibri;
+    background: rgba(0, 0, 0, .70);	
+    /*Gives the content div a slightly transparent black bacground*/
+}
+
+h1{
+    text-align: center;
+    font-family: Calibri;
+    font-size: 75px;
+    color: #FFFFFF;
+    text-shadow:
+        -1px -1px 0 #000000,
+        1px -1px 0 #000000,			
+        -1px 1px 0 #000000,			
+        1px 1px 0 #000000;
+
+}
+
+h2{
+    font-family: calibri;
+    font-size: 20px;
+    text-align: center;
+    margin-top: -60px;
+}
+
+.bottomleft {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: calibri bold;
+    font-size: 20px;
+    
+}
+
+
+h3{
+    font-family: calibri;
+    font-size: 15px;
+    text-align: center;
+
+}
+.logIn{
+    text-align: center;
+
+
+}	
+
+.logIn li{
+    list-style: none;
+    padding: 5px;
+
+}
+
+#button{
+    width:4cm;
+    height: 1cm;
+    text-align: center;
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    background-color:rgba(153, 0, 102, .70);
+    border-radius: 12px; 
+
+
+}
+
+.Register{
+    text-align: center;
+
+
+}	
+
+.Register li{
+    list-style: none;
+    padding: 5px;
+
+}
+
+.greetingMessage{
+    text-align: left;
+    
+    
+}
+h4{
+    font-family: calibri;
+    font-size: 20px;
+    text-align: center;
+    
+    
 }
