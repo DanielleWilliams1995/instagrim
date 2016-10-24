@@ -17,7 +17,7 @@
     <body>
         <header>
         
-        <h1>InstaGrim ! </h1>
+        <h1>heuuuuu ! </h1>
         <h2>Your world in Black and White</h2>
         </header>
         
